@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CodeComments" version="1">
+    <comments>
+      <comment>
+        <place from="13642" to="13725">
+          <path mode="global">$MAVEN_REPOSITORY$/edu/uci/ics/crawler4j/4.4.0/crawler4j-4.4.0-sources.jar!/edu/uci/ics/crawler4j/crawler/WebCrawler.java</path>
+        </place>
+        <text>protected boolean shouldFollowLinksIn(WebURL url) {
+        return true;
+    }</text>
+        <data>Hàm này dùng để cố định luôn là link nào sẽ được craw, có nghĩa là crawl trong một mảng các link.</data>
+      </comment>
+    </comments>
+  </component>
+</project>

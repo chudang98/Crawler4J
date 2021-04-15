@@ -34,7 +34,7 @@ public class Main {
         File crawlStorage = new File("src/test/resources/crawler4j");
         MyConfig config = new MyConfig();
         config.setCrawlStorageFolder(crawlStorage.getAbsolutePath());
-        config.setMaxDepthOfCrawling(3);
+        config.setMaxDepthOfCrawling(2);
         config.setRedis(redis);
 
         int numCrawlers = 6;
@@ -46,12 +46,13 @@ public class Main {
         MyController controller = new MyController(config, pageFetcher, robotstxtServer);
 
         controller.addSeed("https://vnexpress.net/");
-        controller.addSeed("https://vietnamnet.vn/");
+//        controller.addSeed("https://vietnamnet.vn/");
 
         controller.addAcceptDomain("https://vnexpress.net/", "https://vietnamnet.vn/");
 
         CrawlController.WebCrawlerFactory<HtmlCrawler> factory = ()-> new HtmlCrawler(writer);
 
+//        boolean isBlocking = false;
         controller.start(factory, numCrawlers);
         writer.close();
     }
