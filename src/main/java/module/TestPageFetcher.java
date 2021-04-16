@@ -1,3 +1,5 @@
+package module;
+
 import edu.uci.ics.crawler4j.crawler.CrawlConfig;
 import edu.uci.ics.crawler4j.crawler.Page;
 import edu.uci.ics.crawler4j.crawler.exceptions.PageBiggerThanMaxSizeException;
@@ -21,6 +23,10 @@ public class TestPageFetcher {
         url.setURL("https://vnexpress.net/");
         PageFetchResult fetchResult = null;
 
+        /*
+            TODO : Có thể sử dụng Parser để có thể
+                kiểm tra thêm các thông tin của response trả về
+         */
 //        Parser parser = new Parser(config);
 //        Page page = new Page(url);
         try {
@@ -29,10 +35,12 @@ public class TestPageFetcher {
             HttpEntity entity = fetchResult.getEntity();
             InputStream stream = entity.getContent();
 
+            // TODO : Ghi nội dung đã crawl được vào file "content.html"
             File targetFile = new File("content.html");
             OutputStream outStream = new FileOutputStream(targetFile);
             outStream.write(stream.readAllBytes());
 
+//            String content = new String stream.readAllBytes();
             outStream.close();
 
 //            fetchResult.fetchContent(page, 1048576);
@@ -54,6 +62,7 @@ public class TestPageFetcher {
             System.out.println(e);
             e.printStackTrace();
         } finally {
+            // TODO : Đóng <PoolingHttpClientConnectionManager> sau khi sử dụng xong.
             pageFetcher.shutDown();
         }
     }
